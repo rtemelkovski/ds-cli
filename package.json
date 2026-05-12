@@ -5,14 +5,25 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "ds": "./bin/ds.mjs"
+    "ds": "./dist/cli.js"
   },
   "exports": {
-    ".": "./src/index.ts",
-    "./types": "./src/tokens/types.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/tokens/types.d.ts",
+      "import": "./dist/tokens/types.js"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "ds": "tsx src/cli.ts",
+    "dev": "tsx src/cli.ts",
+    "build": "tsup",
+    "prepare": "tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -24,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vitest": "^2.1.8"
