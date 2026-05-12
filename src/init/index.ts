@@ -174,5 +174,9 @@ export async function runInit(cwd: string = process.cwd()): Promise<number> {
   success('ds init complete.')
   info(dim('Next: edit design-system/tokens.ts to define your palette, then `ds generate`.'))
   if (wantHusky) info(dim(`Then: ${det.packageManager} install (to activate the husky hook).`))
+  info('')
+  info(dim('Note: design-system/config.ts imports `./tokens.ts` with an explicit extension so it runs under plain Node.'))
+  info(dim('      If your tsconfig type-checks design-system/, add `"allowImportingTsExtensions": true` to compilerOptions,'))
+  info(dim('      or add `"design-system"` to `exclude`. (ds init does not modify tsconfig.json.)'))
   return 0
 }

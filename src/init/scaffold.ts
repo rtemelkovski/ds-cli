@@ -76,7 +76,7 @@ export function buildConfigTs(args: {
 
   const lintPathsBlock = args.lintPaths.map((p) => `      '${p}',`).join('\n')
 
-  return `import { tokens } from './tokens'
+  return `import { tokens } from './tokens.ts'
 import type { Config } from 'ds-cli/types'
 
 const config: Config = {
